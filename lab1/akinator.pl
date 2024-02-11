@@ -83,6 +83,43 @@ mobile(java, 1).
 mobile(javascript, 1).
 mobile(swift, 1).
 
+statically(ruby,0).
+statically(c_sharp,1).
+statically(python,0).
+statically(c_plu_plus,1).
+statically(f_sharp,1).
+statically(prolog,0).
+statically(c,1).
+statically(asm,1).
+statically(java, 1).
+statically(javascript, 0).
+statically(swift, 1).
+
+web(ruby,1).
+web(c_sharp,1).
+web(python,1).
+web(c_plu_plus,0).
+web(f_sharp,0).
+web(prolog,0).
+web(c,0).
+web(asm,0).
+web(java, 1).
+web(javascript, 1).
+web(swift, 1).
+
+
+ios(ruby,0).
+ios(c_sharp,0).
+ios(python,0).
+ios(c_plu_plus,0).
+ios(f_sharp,0).
+ios(prolog,0).
+ios(c,0).
+ios(asm,0).
+ios(java, 1).
+ios(javascript, 0).
+ios(swift, 1).
+
 question1(X1):-	write("Is your language high level?"),nl,
 				write("1. Yes"),nl,
 				write("0. NO"),nl,
@@ -142,8 +179,6 @@ pr:- question1(X1), question2(X2), question3(X3), question4(X4),
      question5(X5), question6(X6), question7(X7), question8(X8),
      question9(X9), question10(X10),
      high(X, X1), decl(X, X2), interpret(X, X3), oop(X, X4),
-     cross(X, X5), visual(X, X6), mobile(X, X7),
-     (X8 = 1, decl(X, 1); X8 = 0, decl(X, 0)),
-     (X9 = 1, cross(X, 1); X9 = 0, cross(X, 0)),
-     (X10 = 1, visual(X, 2); X10 = 0, visual(X, 0)),
+     cross(X, X5), visual(X, X6), mobile(X, X7), statically(X, X8),
+	 web(X, X9), ios(X, X10),
      write(X).
