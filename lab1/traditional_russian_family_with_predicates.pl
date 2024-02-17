@@ -126,7 +126,7 @@ grand_pas(X) :- grand_pa(Y, X), write(Y), nl, fail.
 % DESCRIPTION:
 % check if X grand pa for Y
 % or Y grand pa for X
-grand_pa_and_son(X, Y) :- grand_pa(X, Y); parent(X1, X), parent(Y, X1), man(X), man(Y).
+grand_pa_and_son(X, Y) :- grand_pa(X, Y), max(Y); grand_pa(Y, X), man(X).
 
 % uncle(+X, +Y)
 % DESCRIPTION:
