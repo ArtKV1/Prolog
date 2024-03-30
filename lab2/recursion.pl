@@ -22,3 +22,16 @@ is_square_free(X):- X<1, !.
 is_square_free(X):- \+is_square_free(X, 1).
 is_square_free(X, N):- (X-N*N) =:= 0, !.
 is_square_free(X, N):- N*N =< X, N1 is N+1, is_square_free(X, N1).
+
+% sum_list_down(-_,?Sum)
+% Вычисляет сумму или проверяет является ли Sum суммой элементов рекурсией вниз.
+sum_list_down(_, Sum):- read_line_to_string(user_input, Input), split_string(Input, " ", "", List2), maplist(atom_number, List2, List), sum_list_down2(List, Sum).
+sum_list_down2(List, Sum):- sum_list_down2(List, 0, Sum).
+sum_list_down2([], CurSum, Sum):- Sum is CurSum, !.
+sum_list_down2([HeadList|TailList], CurSum, Sum):- NewCurSum is CurSum + HeadList, sum_list_down2(TailList, NewCurSum, Sum).
+
+% sum_list_up(-_, ?Sum)
+% Вычисляет сумму или проверяет является ли Sum суммой элементов рекурсией вверх.
+sum_list_up(_, Sum):- read_line_to_string(user_input, Input), split_string(Input, " ", "", List2), maplist(atom_number, List2, List), sum_list_down2(List, Sum).
+sum_list_up2([], 0):- !. 
+sum_list_up2([HeadList|TailList], Sum):- sum_list_up2(TailList, NewSum), Sum is NewSum + HeadList.
