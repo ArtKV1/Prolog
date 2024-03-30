@@ -32,6 +32,6 @@ sum_list_down2([HeadList|TailList], CurSum, Sum):- NewCurSum is CurSum + HeadLis
 
 % sum_list_up(-_, ?Sum)
 % Вычисляет сумму или проверяет является ли Sum суммой элементов рекурсией вверх.
-sum_list_up(_, Sum):- read_line_to_string(user_input, Input), split_string(Input, " ", "", List2), maplist(atom_number, List2, List), sum_list_down2(List, Sum).
+sum_list_up(_, Sum):- read_line_to_string(user_input, Input), split_string(Input, " ", "", List2), maplist(atom_number, List2, List), sum_list_up2(List, Sum).
 sum_list_up2([], 0):- !. 
 sum_list_up2([HeadList|TailList], Sum):- sum_list_up2(TailList, NewSum), Sum is NewSum + HeadList.
